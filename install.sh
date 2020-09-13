@@ -33,7 +33,7 @@ rm -rf $HOME/cloudfoundry/v2ray1
 uuid=`cat /proc/sys/kernel/random/uuid`
 
 path=$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 16)
-echo '{"inbounds":[{"port":443,"protocol":"vmess","settings":{"clients":[{"id":"'$uuid'","alterId":64}]},"streamSettings":{"network":"ws","wsSettings":{"path":"/'$path'"}}}],"outbounds":[{"protocol":"freedom","settings":{}}]}'>$HOME/cloudfoundry/config.json
+echo '{"inbounds":[{"port":80,"protocol":"vmess","settings":{"clients":[{"id":"'$uuid'","alterId":64}]},"streamSettings":{"network":"ws","wsSettings":{"path":"/'$path'"}}}],"outbounds":[{"protocol":"freedom","settings":{}}]}'>$HOME/cloudfoundry/config.json
 echo 'applications:'>>manifest.yml
 echo '- path: .'>>manifest.yml
 echo '  command: '/app/htdocs/v2ray'' >>manifest.yml
